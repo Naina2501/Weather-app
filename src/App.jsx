@@ -17,7 +17,7 @@ function App() {
 
     try {
       const res = await fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(city)}&aqi=yes`
+        `https://api.weatherapi.com/v1/current.json?key=e22c47ccecc84ab49c593729250607&q=London&aqi=yes`
       );
       if (!res.ok) throw new Error('City not found or API error');
       const data = await res.json();
