@@ -17,7 +17,7 @@ function App() {
 
     try {
       const res = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=e22c47ccecc84ab49c593729250607&q=London&aqi=yes`
+        `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(city)}&aqi=yes`
       );
       if (!res.ok) throw new Error('City not found or API error');
       const data = await res.json();
@@ -31,10 +31,10 @@ function App() {
 
   return (
     
-    <Container className="my-5  " style={{width:"100vw",padding:"10px",backgroundColor:"lightblue"}} >
+    <Container className="my-5  " style={{width:"100vw",padding:"10px",backgroundColor:""}} >
       <div className='row ' style={{border:"1px solid black"}}>
         <div className='col-6' >
-          <h2 className="text-left mb-4 p-4">🌤️ Weather App</h2>
+          <h2 className="text-center mb-4">🌤️ Weather App</h2>
           <WeatherForm onSearch={fetchWeather} />
           {loading && <div className="text-center mt-3"><Spinner animation="border" /></div>}
           {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
